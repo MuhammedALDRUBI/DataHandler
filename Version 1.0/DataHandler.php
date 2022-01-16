@@ -2,7 +2,8 @@
 
 //DataHandler v 1.0
 
-//this class helps you to Handle All Data that come from inputs , and you can handle CSRF Token Processes that make your form more protected
+//this class helps you to Handle All Data that come from inputs 
+//and you can handle CSRF Token Processes that make your form more protected
 class DataHandler{
 
     //this array will be returned when validation of data is false
@@ -89,7 +90,8 @@ class DataHandler{
     // Validate_Data method helps you to filter your data that come with $_POST or any associative array
     //@param $Assoc_values_array must be an associative array that you want to filter its values
     //@param $keys_Filters_array must be an associative array that bind each key with its filter
-    //Not : you can use multi filter for each key by putting the seperator | between filters but filters must be logically compatible and these filter must be find in $usableValidatingFilters array
+    //Not : you can use multi filter for each key by putting the seperator | between filters but filters must be logically compatible 
+    //and these filter must be find in $usableValidatingFilters array
     //this method return true or array of error messages
     ///////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////
@@ -212,14 +214,15 @@ class DataHandler{
     //////////////////////////////////////////////////////////////////////////////////
 
 
-     //password hashing method ........... that sanitize your password to hased password
+     //password hashing method ........... that convert your password to hased password
      // $value_to_hasing it the the value that you want to hash it
-     // hashing algorith is PASSWORD_BCRYPT by default
+     // hashing algorith is PASSWORD_BCRYPT by default 
      static public function hash_password($value_to_hasing , $algorithm = PASSWORD_BCRYPT){
         return password_hash($value_to_hasing , PASSWORD_BCRYPT);
     }
 
      //password hashing method ........... that check if your $hashed_password_from_DB is eqiual to hased $password_from_input 
+     //Method will return an logical value (true or false)
      static public function check_hashed_password($hashed_password_from_DB , $password_from_input){
         return password_verify($password_from_input , $hashed_password_from_DB);
     }
@@ -266,7 +269,8 @@ class DataHandler{
     //////////////////////////////////////////////////////////////////////////////////  
     //this method helps you to Create a CSRF Token and its expires
     //CSRF_Token will be saved in $_SESSION array
-    //$expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method but you will able to use form for 5 minutes before CSRF Token expire
+    //$expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method
+    // but you will able to use form for 5 minutes before CSRF Token expire
     // this method return the token that you generated it
     //////////////////////////////////////////////////////////////////////////////////  
     //////////////////////////////////////////////////////////////////////////////////  
@@ -299,7 +303,8 @@ class DataHandler{
     //////////////////////////////////////////////////////////////////////////////////  
     //////////////////////////////////////////////////////////////////////////////////  
     //this method helps you to Check the CSRF token that come with $_POST array and has been passed as  $inputValue param    
-    // this method return true if (CSRF Token that come as $inputValue is eqiual to CSRF Token that found in Session array ) & (Token expire didn't end)
+    // this method return true if (CSRF Token that come as $inputValue is eqiual to CSRF Token that found in Session array ) 
+    //  & (Token expire didn't end)
     // and return an error message if conditions are false
     //////////////////////////////////////////////////////////////////////////////////  
     //////////////////////////////////////////////////////////////////////////////////  
