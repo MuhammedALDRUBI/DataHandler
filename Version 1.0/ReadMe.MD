@@ -87,3 +87,10 @@ this method return the token that you generated it
 this method helps you to Check the CSRF token that come with $_POST array and has been passed as  $inputValue param    
 this method return true if (CSRF Token that come as $inputValue is eqiual to CSRF Token that found in Session array ) & (Token expire didn't end)
 and return an error message if conditions are false
+
+
+Don't forget to Support me on :
+
+Facebook : https://www.facebook.com/MDRDevelopment
+
+instagram : https://www.instagram.com/mdr_development_tr
