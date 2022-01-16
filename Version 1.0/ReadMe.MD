@@ -68,3 +68,22 @@ DataHandler::check_hashed_password($hashed_password_from_DB , $password_from_inp
 
 5 - returnAsJSON($status , $MessagesArray = array() , $data = array() )
 
+this method helps you to handle the response of API 
+$status is the status of process that you did it
+$MessagesArray is an empty array by default , use it to pass an array of messages that explain waht happened in your process
+$data is an empty array by default , use it to pass the data to API JSON Object
+method return an JSON object
+
+ex :
+DataHandler::returnAsJSON(true , array("User's Information Has been updated Successfully !" ) , array("name" => "Muhammed" , "WhatsappNumberForBusiness" => "00905375453731") );
+
+6 - CreateCSRFToken($expire = 300)
+this method helps you to Create a CSRF Token and its expires
+CSRF_Token will be saved in $_SESSION array
+$expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method but you will able to use form for 5 minutes before CSRF Token expire
+this method return the token that you generated it
+
+7 -  CheckCSRFToken($inputValue)
+this method helps you to Check the CSRF token that come with $_POST array and has been passed as  $inputValue param    
+this method return true if (CSRF Token that come as $inputValue is eqiual to CSRF Token that found in Session array ) & (Token expire didn't end)
+and return an error message if conditions are false
