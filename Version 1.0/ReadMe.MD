@@ -34,7 +34,7 @@ and these filter must be find in $usableValidatingFilters array
 <b>this method return true or array of error messages</b>
 
 ex : 
-$Assoc_values_array = array("Email" => "Muhammed@gmail.com" , "age" => 24);
+$Assoc_values_array = array("Email" => "anyEmail@gmail.com" , "age" => 24);
 // min value = 1 , max value = 99 ....... dont use float with int because int is not same as int and you wil get a error message
 //now we want to check if Email is valid email and age 's values is integer and its min value = 1 , max value = 99
 $keys_Filters_array = array("username" => "email" , "age" => "int(1,99)"); 
