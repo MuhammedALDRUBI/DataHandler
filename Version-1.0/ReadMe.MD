@@ -85,6 +85,26 @@ CSRF_Token will be saved in $_SESSION array
 $expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method but you will able to use form for 5 minutes before CSRF Token expire
 this method return the token that you generated it
 
+<br>
+ex : 
+<code>
+  //When we calling the page by <b>GET</b> Request method we must use :
+  DataHandler::CreateCSRFToken(3600); // now we have generated a new CSRF Token and its expire will be 1 hour (300 seconds = 1 Hour)
+  
+  //now we have a CSRF Token in $_SESSION array and we can use SessionManager::FindFindKeyInSession("CSRF_Token") method to get its value to send it by POST Method
+  //we must echo it in hidden input with name = "CSRF_Token" like this
+  <input type="hidden" name="CSRF_Token" value"<?php echo SessionManager::FindFindKeyInSession("CSRF_Token"); ?>" >
+  
+  //now when we caling page by <b>POST</b> Request Method we can use CheckCSRFToken($_POST["CSRF_Token"]) to check if the value 
+  //that come from innput is the same value that found in Session , like this :
+  
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(gettype(DataHandler::CheckCSRFToken($_POST["CSRF_Token"])) != "string"){
+        echo "Form is protected , CSRF Token's value Is the same value that found in session";
+    }
+  }
+</code>
+
 <hr>
 
 7 -  CheckCSRFToken($inputValue)
@@ -92,6 +112,7 @@ this method helps you to Check the CSRF token that come with $_POST array and ha
 this method return true if (CSRF Token that come as $inputValue is eqiual to CSRF Token that found in Session array ) & (Token expire didn't end)
 and return an error message if conditions are false
 
+Ex : example in the previos method part
 <hr>
 
 Don't forget to Support me on :
