@@ -79,31 +79,31 @@ DataHandler::returnAsJSON(true , array("User's Information Has been updated Succ
 
 <hr>
 
-6 - CreateCSRFToken($expire = 300)
-this method helps you to Create a CSRF Token and its expires
-CSRF_Token will be saved in $_SESSION array
-$expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method but you will able to use form for 5 minutes before CSRF Token expire
-this method return the token that you generated it
+6 - CreateCSRFToken($expire = 300)<br>
+this method helps you to Create a CSRF Token and its expires<br>
+CSRF_Token will be saved in $_SESSION array<br>
+$expire is an 300 seconds by default (5 minutes) ..... that mean you can generate a CSRF token when you call your form by GET method but you will able to use form for 5 minutes before CSRF Token expire<br>
+this method return the token that you generated it<br>
 
 <br>
 ex : 
-<code>
-  //When we calling the page by <b>GET</b> Request method we must use :
-  DataHandler::CreateCSRFToken(3600); // now we have generated a new CSRF Token and its expire will be 1 hour (300 seconds = 1 Hour)
+<output>
+  //When we calling the page by <b>GET</b> Request method we must use :<br>
+  DataHandler::CreateCSRFToken(3600); // now we have generated a new CSRF Token and its expire will be 1 hour (300 seconds = 1 Hour)<br>
   
-  //now we have a CSRF Token in $_SESSION array and we can use SessionManager::FindFindKeyInSession("CSRF_Token") method to get its value to send it by POST Method
-  //we must echo it in hidden input with name = "CSRF_Token" like this
+  //now we have a CSRF Token in $_SESSION array and we can use SessionManager::FindFindKeyInSession("CSRF_Token") method to get its value to send it by POST Method<br>
+  //we must echo it in hidden input with name = "CSRF_Token" like this<br>
   <input type="hidden" name="CSRF_Token" value"<?php echo SessionManager::FindFindKeyInSession("CSRF_Token"); ?>" >
   
-  //now when we caling page by <b>POST</b> Request Method we can use CheckCSRFToken($_POST["CSRF_Token"]) to check if the value 
+  //now when we caling page by <b>POST</b> Request Method we can use CheckCSRFToken($_POST["CSRF_Token"]) to check if the value <br>
   //that come from innput is the same value that found in Session , like this :
-  
+  <br>
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(gettype(DataHandler::CheckCSRFToken($_POST["CSRF_Token"])) != "string"){
         echo "Form is protected , CSRF Token's value Is the same value that found in session";
     }
   }
-</code>
+</output>
 
 <hr>
 
